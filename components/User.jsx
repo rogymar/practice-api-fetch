@@ -14,7 +14,7 @@ const getLongNamesPorcentage = (users) => {
 
 const renderImage = (users) => {
     return users.map((user) => (
-        <div className=''>
+        <div>
             <img src={user.avatar} alt="not found avatar" />
         </div>
     ))
@@ -43,15 +43,15 @@ export default function User () {
         .catch((e) => console.error(`${e.name}: ${e.message}`))
 
     return (
-        <div>
-            <div>
-                <button onClick={prevPage} className='border border-purple-500 p-2' disabled={page <= 1}>Prev...</button>
-                <span className='mx-2'>Page {page} of {totalPages}</span>
-                <button onClick={nextPage} className='border border-purple-500 p-2' disabled={page >= totalPages}>Next...</button>
+        <div className='grid gap-4 content-center items-center justify-center w-full h-full'>
+            <div className='flex justify-center items-center content-center'>
+                <button onClick={prevPage} className='p-2 bg-slate-100 hover:bg-gray-500 hover:text-white rounded' disabled={page <= 1}>Prev...</button>
+                <span className='mx-2 text-center'>Page {page} of {totalPages}</span>
+                <button onClick={nextPage} className='p-2 bg-slate-100 hover:bg-gray-500 hover:text-white rounded' disabled={page >= totalPages}>Next...</button>
             </div>
-            <h2>{users ? `Long name porcentage: ${getLongNamesPorcentage(users)}%` : 'Waiting for users...'}</h2>
-            <h2 className='font-bold'>Users Avatars</h2>
-            {users && <div>{renderImage(users)}</div>}
+            <h2 className='text-center text-lg'>{users ? `Long name porcentage: ${getLongNamesPorcentage(users)}%` : 'Waiting for users...'}</h2>
+            <h2 className='font-bold text-center'>Users Avatars</h2>
+            {users && <div className='grid grid-cols-2 gap-3 h-full w-full justify-between border p-3 bg-white border-gray-300'>{renderImage(users)}</div>}
         </div>
     )
 }
