@@ -1,7 +1,8 @@
-const BASE_API = 'https://reqres.in/api/users?page=1'
+const BASE_API = 'https://reqres.in/api/users'
 
-export async function getUser () {
-    const res = await fetch(BASE_API)
+export async function getUser (page = 1) {
+    const url = BASE_API + `?page=${page}`
+    const res = await fetch(url)
 
     if (!res.ok) {
         throw Error(`Fetch failed: ${res}`)
