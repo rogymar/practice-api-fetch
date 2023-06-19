@@ -7,5 +7,5 @@ export async function getUser () {
         throw Error(`Fetch failed: ${res}`)
     }
     
-    return res.json().data
+    return res.json()
 }
